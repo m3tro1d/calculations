@@ -48,6 +48,7 @@ def get_polinom3x3(f_vect):
 
 
 def F2(uv, XYZmat):
+    # TODO: x and y values
     z_values = XYZmat[2, :]
     P_trans = get_polinom3x3(f_vect=z_values)
 
@@ -90,8 +91,8 @@ def findNetNodes(Sfun, P1, P2, P3, P4):
 
     meanpoint = (r00 + r02 + r06 + r08) / 4
 
-    P5 = meanPlane(ABCD1=P1, ABCD2=P3, meanpoint=meanpoint)  # P5 - посередине между плоскостями P1, P3
-    P6 = meanPlane(ABCD1=P2, ABCD2=P4, meanpoint=meanpoint)  # P6 - посередине между плоскостями P2, P4
+    P5 = meanPlane(ABCD1=P1, ABCD2=P3, meanpoint=meanpoint)
+    P6 = meanPlane(ABCD1=P2, ABCD2=P4, meanpoint=meanpoint)
 
     r03 = findPoint(Sfun, P5, P2)
     r05 = findPoint(Sfun, P5, P4)
