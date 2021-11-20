@@ -1,3 +1,5 @@
+import numpy as np
+
 from case3 import F1, findNetNodes, F2
 from plots import xyz_plot
 
@@ -7,6 +9,8 @@ def Sfun(r):
 
 
 if __name__ == '__main__':
+    np.set_printoptions(precision=3)
+
     P1 = [0, 0, 1, 3]  # P1: z + 3 = 0
     P2 = [0, 4, -1, 0]  # P2: 4*y - z = 0
     P3 = [0, 0, 1, -3]  # P3: z - 3 = 0
