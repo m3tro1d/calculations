@@ -17,8 +17,8 @@ def generate_linear_trans(min1, max1, min2, max2):
 
 
 def F1(st, Smin, Smax, Tmin, Tmax):
-    linear_trans = generate_linear_trans(min1=-np.pi / 6, max1=np.pi / 6, min2=np.pi / 3, max2=np.pi / 6)
-    return linear_trans(st, Smin, Smax, Tmin, Tmax)
+    linear_trans = generate_linear_trans(Smin, Smax, Tmin, Tmax)
+    return linear_trans(st)
 
 
 def calcPuv3x3(u, v):
@@ -49,9 +49,9 @@ def get_polinom3x3(f_vect):
 
 def F2(uv, XYZmat):
     z_values = XYZmat[2, :]
-    zP_trans = get_polinom3x3(f_vect=z_values)
+    P_trans = get_polinom3x3(f_vect=z_values)
 
-    return zP_trans(uv)
+    return P_trans(uv)
 
 
 def findPoint(Sfun, P1, P2):
