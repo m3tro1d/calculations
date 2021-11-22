@@ -64,8 +64,8 @@ def findPoint(Sfun, P1, P2):
     def func(r):
         return np.array([
             Sfun(r),
-            np.dot(P1[:3], r) + P1[-1],
-            np.dot(P2[:3], r) + P2[-1],
+            P1[:3] @ r + P1[-1],
+            P2[:3] @ r + P2[-1],
         ])
 
     return root(func, np.array([1.0, 1.0, 1.0])).x
@@ -87,7 +87,7 @@ def meanPlane(ABCD1, ABCD2, meanpoint):
         plane_norm[0],
         plane_norm[1],
         plane_norm[2],
-        np.dot(plane_norm, meanpoint)
+        plane_norm @ meanpoint
     ])
 
 
