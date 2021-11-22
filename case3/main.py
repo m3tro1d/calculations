@@ -1,7 +1,7 @@
 import numpy as np
 
 from case3 import F1, findNetNodes, F2
-from plots import xyz_plot
+from utils import xyz_plot
 
 
 def Sfun(r):
