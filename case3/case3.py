@@ -1,5 +1,5 @@
 import numpy as np
-from scipy.optimize import root
+from scipy.optimize import root, fsolve
 
 
 def transform1(t, t_min, t_max):
@@ -68,15 +68,15 @@ def findPoint(Sfun, P1, P2):
             P2[:3] @ r + P2[-1],
         ])
 
-    return root(func, np.array([1.0, 1.0, 1.0])).x
+    return fsolve(func, np.array([1.0, 1.0, 1.0]))
 
 
 def findCorners4(Sfun, P1, P2, P3, P4):
     return (
-        findPoint(Sfun, P4, P1),
-        findPoint(Sfun, P3, P4),
-        findPoint(Sfun, P2, P3),
         findPoint(Sfun, P1, P2),
+        findPoint(Sfun, P2, P3),
+        findPoint(Sfun, P3, P4),
+        findPoint(Sfun, P1, P4),
     )
 
 
@@ -101,8 +101,8 @@ def findNetNodes(Sfun, P1, P2, P3, P4):
 
     r03 = findPoint(Sfun, P5, P2)
     r05 = findPoint(Sfun, P5, P4)
-    r01 = findPoint(Sfun, P1, P6)
-    r07 = findPoint(Sfun, P3, P6)
+    r01 = findPoint(Sfun, P2, P6)
+    r07 = findPoint(Sfun, P2, P6)
 
     r04 = findPoint(Sfun, P5, P6)
 
