@@ -1,5 +1,5 @@
 import numpy as np
-from scipy.optimize import root, fsolve
+from scipy.optimize import fsolve
 
 
 def transform1(t, t_min, t_max):
@@ -81,13 +81,13 @@ def findCorners4(Sfun, P1, P2, P3, P4):
 
 
 def meanPlane(ABCD1, ABCD2, meanpoint):
-    plane_norm = np.cross(ABCD1[:3], ABCD2[:3])
+    plane_norm = (np.array(ABCD1[:3]) + np.array(ABCD2[:3])) / 2
 
     return np.array([
         plane_norm[0],
         plane_norm[1],
         plane_norm[2],
-        plane_norm @ meanpoint
+        plane_norm @ meanpoint,
     ])
 
 
@@ -101,8 +101,8 @@ def findNetNodes(Sfun, P1, P2, P3, P4):
 
     r03 = findPoint(Sfun, P5, P2)
     r05 = findPoint(Sfun, P5, P4)
-    r01 = findPoint(Sfun, P4, P6)
-    r07 = findPoint(Sfun, P2, P6)
+    r01 = findPoint(Sfun, P1, P6)
+    r07 = findPoint(Sfun, P3, P6)
 
     r04 = findPoint(Sfun, P5, P6)
 
