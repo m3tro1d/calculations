@@ -84,10 +84,8 @@ def meanPlane(ABCD1, ABCD2, meanpoint):
     plane_norm = (np.array(ABCD1[:3]) + np.array(ABCD2[:3])) / 2
 
     return np.array([
-        plane_norm[0],
-        plane_norm[1],
-        plane_norm[2],
-        plane_norm @ meanpoint,
+        *plane_norm,
+        - (plane_norm @ meanpoint),
     ])
 
 
