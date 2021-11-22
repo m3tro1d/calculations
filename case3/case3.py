@@ -8,7 +8,7 @@ def transform1(t, t_min, t_max):
 
 
 def generate_linear_trans(min1, max1, min2, max2):
-    def linear_trans(xy, min1=min1, max1=max1, min2=min2, max2=max2):
+    def linear_trans(xy):
         u = transform1(xy[0], t_min=min1, t_max=max1)
         v = transform1(xy[1], t_min=min2, t_max=max2)
         return u, v
@@ -48,11 +48,16 @@ def get_polinom3x3(f_vect):
 
 
 def F2(uv, XYZmat):
-    # TODO: x and y values
-    z_values = XYZmat[2, :]
-    P_trans = get_polinom3x3(f_vect=z_values)
+    x_values = XYZmat[0]
+    x_polynomial = get_polinom3x3(x_values)
 
-    return P_trans(uv)
+    y_values = XYZmat[1]
+    y_polynomial = get_polinom3x3(y_values)
+
+    z_values = XYZmat[2]
+    z_polynomial = get_polinom3x3(z_values)
+
+    return x_polynomial(uv), y_polynomial(uv), z_polynomial(uv)
 
 
 def findPoint(Sfun, P1, P2):
