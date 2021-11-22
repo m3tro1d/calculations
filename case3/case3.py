@@ -73,10 +73,10 @@ def findPoint(Sfun, P1, P2):
 
 def findCorners4(Sfun, P1, P2, P3, P4):
     return (
-        findPoint(Sfun, P1, P2),
-        findPoint(Sfun, P2, P3),
-        findPoint(Sfun, P3, P4),
         findPoint(Sfun, P4, P1),
+        findPoint(Sfun, P3, P4),
+        findPoint(Sfun, P2, P3),
+        findPoint(Sfun, P1, P2),
     )
 
 
