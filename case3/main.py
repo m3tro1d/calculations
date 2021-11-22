@@ -8,6 +8,11 @@ def Sfun(r):
     return 4 * r[0] ** 2 + r[2] ** 2 - 16
 
 
+def checkInSurf(XYZmat, Sfun):
+    err = abs(Sfun(XYZmat))
+    return max(err)
+
+
 if __name__ == '__main__':
     np.set_printoptions(precision=3)
 
@@ -22,6 +27,7 @@ if __name__ == '__main__':
     # array([[ 1.323,  1.323,  1.323,  2.   ,  2.   ,  2.   ,  1.323,  1.323,  1.323],
     #        [-0.75 ,  1.631,  4.   ,  0.   ,  2.   ,  4.   ,  0.75 ,  2.369,  4.   ],
     #        [-3.   , -3.   , -3.   ,  0.   ,  0.   ,  0.   ,  3.   ,  3.   ,  3.   ]])
+    print(checkInSurf(XYZmat, Sfun))
 
     # OK
     uv_coordinates = F1(st=[5, 2], Smin=0, Smax=20, Tmin=-2, Tmax=6)
