@@ -101,7 +101,7 @@ def findNetNodes(Sfun, P1, P2, P3, P4):
 
     r03 = findPoint(Sfun, P5, P2)
     r05 = findPoint(Sfun, P5, P4)
-    r01 = findPoint(Sfun, P2, P6)
+    r01 = findPoint(Sfun, P4, P6)
     r07 = findPoint(Sfun, P2, P6)
 
     r04 = findPoint(Sfun, P5, P6)
