@@ -68,7 +68,12 @@ def findPoint(Sfun, P1, P2):
             P2[:3] @ r + P2[-1],
         ])
 
-    return fsolve(func, np.array([1.0, 1.0, 1.0]))
+    solution = fsolve(func, np.array([1.0, 1.0, 1.0]))
+
+    if np.isclose(func(solution), [0.0, 0.0, 0.0]).all():
+        return solution
+
+    raise ArithmeticError(f'solution with {P1} and {P2} did not converge')
 
 
 def findCorners4(Sfun, P1, P2, P3, P4):
